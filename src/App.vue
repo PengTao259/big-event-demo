@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 // console.log(GAGA)
+console.log('App.vue')
 </script>
 
 <template>
