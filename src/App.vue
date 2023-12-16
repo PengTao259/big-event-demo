@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div>我是APP</div>
+  <router-view></router-view>
 </template>
 
 <style scoped></style>
