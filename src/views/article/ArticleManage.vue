@@ -89,6 +89,14 @@ const onDeleteArticle = async (row) => {
       // 由于我们已经捕获了这个被拒绝的 Promise，所以浏览器不会显示警告
     })
 }
+
+const onSuccess = (type) => {
+  if (type === 'add') {
+    const lastPage = Math.ceil((total.value + 1) / params.value.pagesize)
+    params.value.pagenum = lastPage
+  }
+  getArticleList()
+}
 </script>
 <template>
   <page-container title="文章管理">
@@ -153,7 +161,7 @@ const onDeleteArticle = async (row) => {
     />
 
     <!-- 抽屉组件 -->
-    <article-edit ref="drawer"></article-edit>
+    <article-edit ref="drawer" @success="onSuccess()"></article-edit>
   </page-container>
 </template>
 

@@ -35,3 +35,6 @@ export const artDelService = (id) =>
   request.delete(`/my/article/info`, {
     params: { id }
   })
+
+// 更新文章
+export const artUpdateService = (data) => request.put('/my/article/info', data)
