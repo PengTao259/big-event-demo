@@ -3,6 +3,9 @@ import { User, Lock } from '@element-plus/icons-vue'
 import { ref } from 'vue'
 import { userRegisterService, userLoginService } from '@/api/user'
 import { watch } from 'vue'
+import { useUserStore } from '@/stores'
+import { useRouter } from 'vue-router'
+
 const isRegister = ref(false)
 const formModel = ref({
   username: '',
@@ -64,12 +67,14 @@ watch(isRegister, () => {
 })
 
 // 登录
+const userStore = useUserStore()
+const router = useRouter()
 const login = async () => {
   await form.value.validate()
   const res = await userLoginService(formModel.value)
-  console.log(res, 'res')
-  // alert('登录成功')
-  // ElMessage.success('登录成功')
+  userStore.setToken(res.data.token)
+  ElMessage.success('登录成功')
+  router.push('/')
 }
 </script>
 
